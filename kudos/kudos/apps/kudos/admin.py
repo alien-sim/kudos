@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from kudos.apps.kudos.models.user import User
+from kudos.apps.kudos.models.organization import Organization
 
 
 class AdminUser(admin.ModelAdmin):
@@ -9,3 +10,9 @@ class AdminUser(admin.ModelAdmin):
     list_filter = ("is_active",)
 
 admin.site.register(User, AdminUser)
+
+class AdminOrganization(admin.ModelAdmin):
+    list_display = ("name", )  
+    search_fields = ("name", )
+
+admin.site.register(Organization, AdminOrganization)

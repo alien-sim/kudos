@@ -2,19 +2,26 @@ import logging
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from kudos.apps.kudos.models.organization import Organization
 from rest_framework_simplejwt.tokens import RefreshToken
 
 logger = logging.getLogger(__name__)
 
-#-------------------------------------------------------------------------------
-# User
-#-------------------------------------------------------------------------------
+
 class User(AbstractUser):
     """
     Custom User model extending Django's AbstractUser
     """
     email = models.EmailField(
         unique=True
+    )
+
+    organization = models.ForeignKey(
+        Organization,
+        on_delete=models.CASCADE,
+        related_name="users",
+        help_text="Organization associated with the User",
+        null=True
     )
 
     USERNAME_FIELD = 'email'
@@ -34,9 +41,6 @@ class User(AbstractUser):
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
     
-    #---------------------------------------------------------------------------
-    # get_access_tokens
-    #---------------------------------------------------------------------------
     def get_access_tokens(self):
         refresh = RefreshToken.for_user(self)
         return {
