@@ -1,0 +1,1 @@
+from kudos.apps.kudos.models.user import User

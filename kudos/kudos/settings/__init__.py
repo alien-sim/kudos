@@ -10,10 +10,25 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+
+from kudos.apps.kudos.utility import confirm_dir_exists
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+FILES_DIR = os.path.join(BASE_DIR, 'files')
+confirm_dir_exists(FILES_DIR)
+
+STATIC_DIR = os.path.join(FILES_DIR, 'static')
+confirm_dir_exists(STATIC_DIR)
+
+STATIC_ROOT = os.path.join(FILES_DIR, 'assets')
+confirm_dir_exists(STATIC_ROOT)
+
+MEDIA_ROOT = os.path.join(FILES_DIR, 'media')
+confirm_dir_exists(MEDIA_ROOT)
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,6 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'kudos.apps.kudos'
 ]
 
 MIDDLEWARE = [
@@ -98,6 +115,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'kudos.User'
 
 
 # Internationalization
