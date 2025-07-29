@@ -7,13 +7,13 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('kudos', '0002_organization'),
+        ('kudo_app', '0002_organization'),
     ]
 
     operations = [
         migrations.AddField(
             model_name='user',
             name='organization',
-            field=models.ForeignKey(help_text='Organization associated with the User', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='users', to='kudos.organization'),
+            field=models.ForeignKey(help_text='Organization associated with the User', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='users', to='kudo_app.organization'),
         ),
     ]

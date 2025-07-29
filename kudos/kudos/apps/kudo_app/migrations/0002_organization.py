@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('kudos', '0001_initial'),
+        ('kudo_app', '0001_initial'),
     ]
 
     operations = [

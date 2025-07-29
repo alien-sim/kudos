@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from kudos.apps.kudos.models.user import User
-from kudos.apps.kudos.models.organization import Organization
+from kudos.apps.kudo_app.models.user import User
+from kudos.apps.kudo_app.models.organization import Organization
 
 
 class AdminUser(admin.ModelAdmin):

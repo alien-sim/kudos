@@ -4,7 +4,7 @@ from django.db import models
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from django.contrib.auth.models import AbstractUser
-from kudos.apps.kudos.models.organization import Organization
+from kudos.apps.kudo_app.models.organization import Organization
 
 logger = logging.getLogger(__name__)
 

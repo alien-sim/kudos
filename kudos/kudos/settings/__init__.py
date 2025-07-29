@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+import logging
 from pathlib import Path
 
-from kudos.apps.kudos.utility import confirm_dir_exists
+from kudos.apps.kudo_app.utility import confirm_dir_exists
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -53,7 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'kudos.apps.kudos'
+    'kudos.apps.kudo_app'
 ]
 
 MIDDLEWARE = [
@@ -116,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'kudos.User'
+AUTH_USER_MODEL = 'kudo_app.User'
 
 
 # Internationalization
@@ -140,3 +141,62 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format':
+                '%(levelname)s %(asctime)s %(process)d %(thread)d [%(module)s] %(message)s'
+        },
+        'simple': {
+            'format': '[%(levelname)s] [%(module)s] %(message)s'
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            # 'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler',
+        },
+        'log_file': {
+             'level': 'DEBUG',
+            #  'filters': ['require_debug_false'],
+             'class': 'logging.handlers.RotatingFileHandler',
+             'formatter': 'verbose',
+             'filename': 'debug.log',
+             'maxBytes': 1024 * 1024 * 100,  # 100 mb
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'kudo': {
+            'handlers': ['mail_admins', 'console', 'log_file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}

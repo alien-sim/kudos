@@ -7,6 +7,8 @@ import Aura from '@primeng/themes/aura';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { ErrorIntercept } from './core/interceptor/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     provideAnimationsAsync(),
@@ -26,7 +28,13 @@ import { AppComponent } from './app.component';
         }
       },
       
-    })
+    }),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorIntercept,
+      multi: true
+    },
+    provideHttpClient(withInterceptorsFromDi()),
 
   ],
   bootstrap: [AppComponent]
