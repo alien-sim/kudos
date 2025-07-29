@@ -1,9 +1,10 @@
 import logging
 from django.conf import settings
 from django.db import models
+from rest_framework_simplejwt.tokens import RefreshToken
+
 from django.contrib.auth.models import AbstractUser
 from kudos.apps.kudos.models.organization import Organization
-from rest_framework_simplejwt.tokens import RefreshToken
 
 logger = logging.getLogger(__name__)
 
