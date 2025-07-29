@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeuix/themes/aura';
+import Aura from '@primeng/themes/aura';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,8 +20,12 @@ import { AppComponent } from './app.component';
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
-        preset: Aura
-      }
+        preset: Aura,
+        options:{
+          darkModeSelector:""
+        }
+      },
+      
     })
 
   ],
