@@ -26,5 +26,10 @@ urlpatterns = [
         'organizations/', 
         ViewAPIOrganization.as_view(),
         name='organizations' 
+    ),
+    path(
+        'kudo-user/', 
+        ViewAPIOrganization.as_view(),
+        name='kudo-user' 
     )
 ]

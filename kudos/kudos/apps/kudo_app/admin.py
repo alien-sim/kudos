@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from kudos.apps.kudo_app.models.user import User
 from kudos.apps.kudo_app.models.organization import Organization
+from kudos.apps.kudo_app.models.kudo import Kudo
 
 
 class AdminUser(admin.ModelAdmin):
@@ -16,3 +17,9 @@ class AdminOrganization(admin.ModelAdmin):
     search_fields = ("name", )
 
 admin.site.register(Organization, AdminOrganization)
+
+class AdminKudo(admin.ModelAdmin):
+    list_display = ("sender", 'receiver' )  
+    search_fields = ("name", )
+
+admin.site.register(Kudo, AdminKudo)
