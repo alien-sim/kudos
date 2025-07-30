@@ -4,7 +4,7 @@ from rest_framework.status import HTTP_200_OK
 from rest_framework.status import HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
-from kudos.kudos.apps.kudo_app.api.serializers.register import SerializerAPIRegister
+from kudos.apps.kudo_app.api.serializers.register import SerializerAPIRegister
 
 logger = logging.getLogger(__name__)
 

@@ -13,6 +13,11 @@ body{
     flex-direction: column;
     margin: 10px 0;
 }
+.form-group-row{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
 
 .custom-input{
     &.p-password{
