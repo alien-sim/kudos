@@ -5,24 +5,30 @@ import { AuthService } from './auth.service';
 
 
 @Injectable({ providedIn: 'root' })
-export class IsSignedInGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
     constructor(
         private router: Router,
         private authService: AuthService,
     ) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        return this.authService.getCurrentUser().pipe(
+        let activated = this.authService.getCurrentUser().pipe(
             map(user => {
-                if(user){
-                    this.router.navigateByUrl('/dashboard');
-                    return false;
+                if (user) {
+                    return true;
                 }else{
-                    // this.router.navigateByUrl('/account/login');
+                    this.router.navigateByUrl('/login');
                 }
-            return !user;
+                // authorized so return true
+                return !!user;
+            }),
+            tap(isLogged => {
+                if (!isLogged) {
+                    this.router.navigateByUrl('/login');
+                }
             })
         );
-       
+        return activated
+
     }
 }

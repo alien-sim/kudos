@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, switchMap, tap, throwError } from 'rxjs';
 import { JWTTokenService } from './jwt-token.service';
 import { LocalStorageService } from './local-storage.service';
 
@@ -8,6 +8,8 @@ import { LocalStorageService } from './local-storage.service';
   providedIn: 'root'
 })
 export class AuthService {
+
+  user$ = new BehaviorSubject(null);
 
   constructor(
     private http: HttpClient,
@@ -36,5 +38,36 @@ export class AuthService {
 
   private setToken(key: string, token: any): void {
     this.localStorageService.setItem(key, token);
+  }
+
+  getCurrentUser(): Observable<any> {
+    return this.user$.pipe(
+      switchMap((user) => {
+        // check if we already have user data and force refresh is false
+        if (user) {
+          return of(user);
+        }
+        const token = this.localStorageService.getItem("token");
+        // if there is token then fetch the current user
+        if (token) {
+          return this.fetchCurrentUser();
+        }
+        return of(null);
+      })
+    );
+  }
+
+  fetchCurrentUser(): Observable<any> {
+    return this.http
+      .get<any>(`/api/kudos/user-profile/`, {})
+      .pipe(
+        tap((user) => {
+          this.user$.next(user);
+        }),
+        catchError((error) => {
+          console.log(error);
+          return throwError("fetchCurrentUser server Error");
+        })
+      );
   }
 }

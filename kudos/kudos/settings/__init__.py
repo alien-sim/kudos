@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 import logging
 from pathlib import Path
+from django.utils import timezone
 
 from kudos.apps.kudo_app.utility import confirm_dir_exists
 
@@ -200,3 +201,25 @@ LOGGING = {
         },
     },
 }
+
+# Rest framework
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.TokenAuthentication'
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timezone.timedelta(days=1),  # Set the token expiration time as per your needs.
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timezone.timedelta(days=5),
+    'SLIDING_TOKEN_LIFETIME': timezone.timedelta(days=1),
+    'SLIDING_TOKEN_REFRESH_ON_LOGIN': True,
+}
+

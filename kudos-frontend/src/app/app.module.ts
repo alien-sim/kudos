@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ErrorIntercept } from './core/interceptor/error.interceptor';
+import { TokenInterceptor } from './core/interceptor/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,11 @@ import { ErrorIntercept } from './core/interceptor/error.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorIntercept,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
       multi: true
     },
     provideHttpClient(withInterceptorsFromDi()),

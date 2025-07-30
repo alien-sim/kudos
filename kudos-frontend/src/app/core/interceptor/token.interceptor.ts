@@ -12,8 +12,6 @@ export const NO_TOKEN = new HttpContextToken(() => false);
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-	private refreshingInProgress!: boolean;
-	private accessTokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null!);
 
 	constructor(
 		private localStorageService: LocalStorageService,
@@ -35,20 +33,14 @@ export class TokenInterceptor implements HttpInterceptor {
 		return next.handle(this.addAuthorizationHeader(req, accessToken)).pipe(
 		catchError(err => {
 
-			// // in case of 401 http error (refresh token failed)
-			// if(err instanceof HttpErrorResponse && err.status === 401 && err.url?.includes('refresh_token')){
-			//   // otherwise logout and redirect to login page
-			//   return this.logoutAndRedirect(err);
-			// }
-			// in case of 401 http error
 			if (err instanceof HttpErrorResponse && err.status === 401) {
 				// get refresh tokens
 				const refreshToken = this.localStorageService.getItem('refreshToken');
 
 				// if there are tokens then send refresh token request
-				if (refreshToken && accessToken) {
-					return this.refreshToken(req, next);
-				}
+				// if (refreshToken && accessToken) {
+				// 	return this.refreshToken(req, next);
+				// }
 
 				// otherwise logout and redirect to login page
 				return this.logoutAndRedirect(err);
@@ -56,7 +48,6 @@ export class TokenInterceptor implements HttpInterceptor {
 
 			// // in case of 403 http error (refresh token failed)
 			if (err instanceof HttpErrorResponse && err.status === 403) {
-				// return this.refreshToken(req, next);
 				// logout and redirect to login page
 				return this.logoutAndRedirect(err);
 			}
@@ -76,43 +67,13 @@ export class TokenInterceptor implements HttpInterceptor {
 
 	private logoutAndRedirect(err:any): Observable<HttpEvent<any>> {
 		this.authService.logout();
-		this.router.navigate(['/account/login'], {
+		this.router.navigate(['/login'], {
 			replaceUrl: true,
 			state: {}, // or omit it entirely
 		});
-		// this.router.navigateByUrl('/account/login');
 
 		return throwError(err);
 	}
 
-	private refreshToken(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-		if (!this.refreshingInProgress) {
-			this.refreshingInProgress = true;
-			this.accessTokenSubject.next(null!);
-
-			return this.authService.refreshToken().pipe(
-				switchMap((res) => {
-					console.log('refresh response intercept -', res)
-					this.refreshingInProgress = false;
-					this.accessTokenSubject.next(res.access);
-					// repeat failed request with new token
-					return next.handle(this.addAuthorizationHeader(request, res.access));
-				}),
-				catchError((err) => {
-					// repeat failed request with new token
-					return this.logoutAndRedirect(err);
-				})
-			);
-		} else {
-			// wait while getting new token
-			return this.accessTokenSubject.pipe(
-				filter(token => token !== null),
-				take(1),
-				switchMap(token => {
-					// repeat failed request with new token
-					return next.handle(this.addAuthorizationHeader(request, token));
-				}
-			));
-		}
-	}
+	
 }
