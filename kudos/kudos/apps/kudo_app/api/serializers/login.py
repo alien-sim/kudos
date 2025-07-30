@@ -16,7 +16,7 @@ class SerializerAPITokenView(serializers.Serializer):
     """
     
     email = serializers.EmailField(max_length=255)
-    password = serializers.CharField(max_length=30)
+    password = serializers.CharField()
     
     #---------------------------------------------------------------------------
     # validate
@@ -26,17 +26,17 @@ class SerializerAPITokenView(serializers.Serializer):
             email = attrs['email'].lower()
             self.user = User.objects.get(email=email)
         except (ObjectDoesNotExist, AttributeError):
-            raise serializers.ValidationError('Invalid email or password.')
+            raise ValidationError('Invalid email or password.')
         
         if not self.user.check_password(attrs['password']):
-            raise serializers.ValidationError('Invalid email or password.')
+            raise ValidationError('Invalid email or password.')
         
         if self.user.is_active == False:
-            raise serializers.ValidationError('This user is not active.')
+            raise ValidationError('This user is not active.')
 
         
-        return serializers.Serializer.validate(self, attrs)
+        return super().validate(attrs)
 
-    def login(self):
+    def get_tokens(self) -> dict:
         return self.user.get_access_tokens()
         

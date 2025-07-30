@@ -3,7 +3,7 @@ from django.conf import settings
 from django.db import models
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, UserManager
 from kudos.apps.kudo_app.models.organization import Organization
 
 logger = logging.getLogger(__name__)
@@ -24,6 +24,8 @@ class User(AbstractUser):
         help_text="Organization associated with the User",
         null=True
     )
+
+    objects = UserManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
