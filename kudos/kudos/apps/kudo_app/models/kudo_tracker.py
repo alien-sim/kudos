@@ -1,6 +1,8 @@
 from django.db import models
+from datetime import date, timedelta
 
 from kudos.apps.kudo_app.models.user import User
+from kudos.apps.kudo_app.utility import get_week_start
 
 class WeeklyKudoTracker(models.Model):
     """
@@ -23,3 +25,15 @@ class WeeklyKudoTracker(models.Model):
 
     def __str__(self):
         return f"{self.id}"
+    
+    
+    @classmethod
+    def get_or_create_weekly_tracker(cls, user):
+        week_start = get_week_start()
+        tracker, _ = WeeklyKudoTracker.objects.get_or_create(
+            user_id=user,
+            week_start=week_start
+        )
+        return tracker
+
+

@@ -4,6 +4,8 @@ from kudos.apps.kudo_app.api.views.login import ViewAPILogin
 from kudos.apps.kudo_app.api.views.user_profile import ViewAPIUserProfile
 from kudos.apps.kudo_app.api.views.register import ViewAPIRegister
 from kudos.apps.kudo_app.api.views.organization import ViewAPIOrganization
+from kudos.apps.kudo_app.api.views.user_list import ViewAPIOrganizationUser
+from kudos.apps.kudo_app.api.views.kudo import ViewAPIKudo
 
 
 urlpatterns = [
@@ -28,8 +30,14 @@ urlpatterns = [
         name='organizations' 
     ),
     path(
-        'kudo-user/', 
-        ViewAPIOrganization.as_view(),
-        name='kudo-user' 
+        'user-list/', 
+        ViewAPIOrganizationUser.as_view(),
+        name='user-list' 
+    ),
+
+    path(
+        'kudo/', 
+        ViewAPIKudo.as_view(),
+        name='kudo' 
     )
 ]

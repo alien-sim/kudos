@@ -20,4 +20,12 @@ export class KudosService {
   signup(data:any){
     return this.http.post(`${this.baseURL}register/`, data)
   }
+
+  getOrgUsers(){
+    return this.http.get(`${this.baseURL}user-list/`)
+  }
+
+  sendKudo(data:any){
+    return this.http.post(`${this.baseURL}kudo/`, data)
+  }
 }

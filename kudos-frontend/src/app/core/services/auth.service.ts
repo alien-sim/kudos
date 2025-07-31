@@ -34,6 +34,7 @@ export class AuthService {
   logout(): void {  
     this.localStorageService.removeItem("token");
     this.localStorageService.removeItem("refreshToken");
+    this.user$.next(null);
   }
 
   private setToken(key: string, token: any): void {
