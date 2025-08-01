@@ -19,19 +19,21 @@ python manage.py loaddata files/fixtures/organization.json
 python manage.py loaddata files/fixtures/users.json
 python manage.py loaddata files/fixtures/kudos.json
 python manage.py loaddata files/fixtures/kudos_tracker.json
-
+```
 
 
 ## Frontend - Angular
 
 ### Setup
+
+```bash
 cd kudos-frontend/
 npm install
 
 ### Run application
 ng serve
 Navigate to http://localhost:4200/ in your browser
-
+```
 
 ## Login Credentials
 
