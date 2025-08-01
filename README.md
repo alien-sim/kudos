@@ -38,11 +38,11 @@ Navigate to http://localhost:4200/ in your browser
 ## Login Credentials
 
 ### Regular User
-Email : luke@yopmail.com
-password: Admin@123
+`Email : luke@yopmail.com`
+`password: Admin@123`
 
-All users have the same password: Admin@123
+`All users have the same password: Admin@123`
 
 ### Django Admin (Superuser)
-Email : admin@gmail.com
-password: Admin@123
+`Email : admin@gmail.com`
+`password: Admin@123`
