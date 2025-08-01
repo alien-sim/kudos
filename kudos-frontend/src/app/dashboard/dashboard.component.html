@@ -10,8 +10,14 @@
         </span>
     </div>
     <div class="content">
-        <h3><span style="font-size: 16px;">Welcome,</span> {{ user.first_name | uppercase }}</h3>
-        <p-card header="Received Kudos" *ngIf="receivedKudoList.length" styleClass="my-3">
+        <h3>
+            <span style="font-size: 16px;">Welcome </span> 
+            {{ user.first_name | uppercase }}! 
+        </h3>
+        <div class="mb-3">
+            <p-chip [label]="user.organization.name" icon="pi pi-building" />
+        </div>
+        <p-card header="Received Kudos" *ngIf="receivedKudoList.length" styleClass="mb-3">
             
             <p-table [value]="receivedKudoList" [tableStyle]="{ 'max-width': '100%' }">
                 <ng-template #header>

@@ -1,0 +1,20 @@
+[
+{
+    "model": "kudo_app.weeklykudotracker",
+    "pk": 3,
+    "fields": {
+        "user": 6,
+        "week_start": "2025-07-28",
+        "kudos_given": 1
+    }
+},
+{
+    "model": "kudo_app.weeklykudotracker",
+    "pk": 5,
+    "fields": {
+        "user": 7,
+        "week_start": "2025-07-28",
+        "kudos_given": 1
+    }
+}
+]

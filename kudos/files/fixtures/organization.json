@@ -1,0 +1,37 @@
+[
+{
+    "model": "kudo_app.organization",
+    "pk": 1,
+    "fields": {
+        "name": "IT"
+    }
+},
+{
+    "model": "kudo_app.organization",
+    "pk": 2,
+    "fields": {
+        "name": "Marketting"
+    }
+},
+{
+    "model": "kudo_app.organization",
+    "pk": 3,
+    "fields": {
+        "name": "Advertising"
+    }
+},
+{
+    "model": "kudo_app.organization",
+    "pk": 4,
+    "fields": {
+        "name": "Real Estate"
+    }
+},
+{
+    "model": "kudo_app.organization",
+    "pk": 5,
+    "fields": {
+        "name": "Automobile"
+    }
+}
+]

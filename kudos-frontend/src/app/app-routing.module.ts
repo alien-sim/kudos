@@ -14,7 +14,11 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
     canActivate: [IsSignedInGuard],
   },
-  { path: 'register', loadChildren: () => import('./register/register.module').then(m => m.RegisterModule) },
+  { 
+    path: 'register', 
+    loadChildren: () => import('./register/register.module').then(m => m.RegisterModule),
+    canActivate: [IsSignedInGuard],
+  },
   { 
     path: 'dashboard', 
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),

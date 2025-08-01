@@ -1,0 +1,22 @@
+[
+{
+    "model": "kudo_app.kudo",
+    "pk": 5,
+    "fields": {
+        "sender": 6,
+        "receiver": 5,
+        "message": "Doing good",
+        "created_at": "2025-08-01T14:15:58.026Z"
+    }
+},
+{
+    "model": "kudo_app.kudo",
+    "pk": 7,
+    "fields": {
+        "sender": 7,
+        "receiver": 5,
+        "message": "Great work Phill.\r\nKeep it up.",
+        "created_at": "2025-08-01T16:32:52.429Z"
+    }
+}
+]

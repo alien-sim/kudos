@@ -1,0 +1,268 @@
+[
+{
+    "model": "kudo_app.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$tpj1iIILp6T2wjkUASnuUS$ve/V/5pgYjCTp20LdyJzrCJALc7ELldpQqnRNa6tJHM=",
+        "last_login": "2025-08-01T12:39:35.484Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-07-29T16:49:57.664Z",
+        "email": "admin@gmail.com",
+        "organization": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kudo_app.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$3dgYdW4sCfTgkAlTF005lM$UHk8jt9YZRnZg02DnDbPp2Ie8KRFqFEul413PLqpBCM=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "john@yopmail.com",
+        "first_name": "John",
+        "last_name": "doe",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-07-30T16:07:59.321Z",
+        "email": "john@yopmail.com",
+        "organization": 2,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kudo_app.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$moDmCNtV2XYLVJezc1mqIk$iK+cAgw1b5K4v0gMhUbPruJ1vz6qT0yxe0EHNoHBPrA=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "phill@yopmail.com",
+        "first_name": "Phil",
+        "last_name": "talbot",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-01T12:41:03.519Z",
+        "email": "phill@yopmail.com",
+        "organization": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kudo_app.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$LYnAZF0UWSsanC4rfGnYbe$fV/OssRoBnfWkoyDFowxGxXLxs3S5r8UaBuKA6q2wu0=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "luke@yopmail.com",
+        "first_name": "luke",
+        "last_name": "prada",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-01T12:42:18.278Z",
+        "email": "luke@yopmail.com",
+        "organization": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kudo_app.user",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$uNojcvZdr3yPuq31kMYmsp$AUYr4Vwbe+R9f/N+fHUQLKANbafpVtM8aQ+0/iGQ6Ls=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "david@yopmail.com",
+        "first_name": "david",
+        "last_name": "doe",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-01T14:17:05.622Z",
+        "email": "david@yopmail.com",
+        "organization": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kudo_app.user",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$fQR85zulj50AhK6o779uix$uUO42WWxVplnzG5xHPdLlhOoJkXziiy9Gr7q/4KhKzE=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "adrian@yopmail.com",
+        "first_name": "Adrian",
+        "last_name": "Dove",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-01T14:37:55.308Z",
+        "email": "adrian@yopmail.com",
+        "organization": 4,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kudo_app.user",
+    "pk": 12,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$Ty6KYVT0gTZj3kCbtb4SLQ$kzSQjTf+dFPSVVM7h4hkIWf3l5LJxJv5azR4mc5czj4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "riya@yopmail.com",
+        "first_name": "Riya",
+        "last_name": "Gupta",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-01T16:19:02.453Z",
+        "email": "riya@yopmail.com",
+        "organization": 4,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kudo_app.user",
+    "pk": 13,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$30Qy6PHZ5VXneP5P7dRpNQ$hFxAIebRCC2V8tC0AnUzlY/XZVcm2L1CU4djcxx6zmE=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "olivia@yopmail.com",
+        "first_name": "Olivia",
+        "last_name": "Kurt",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-01T16:20:02.403Z",
+        "email": "olivia@yopmail.com",
+        "organization": 2,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kudo_app.user",
+    "pk": 14,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$HKNauLdukNec8uNBp4xWsR$EjIigKMS0eHzRpkKcsjvWxunwkzJqXqX478OEhmKzPs=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "emma@yopmail.com",
+        "first_name": "Emma",
+        "last_name": "Geller",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-01T16:20:35.196Z",
+        "email": "emma@yopmail.com",
+        "organization": 3,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kudo_app.user",
+    "pk": 15,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$tYEMZqDv0aiUr6KHEpuFON$S+sGnK7U/5udqjwMKpnGc/xcBLXswFqnIq9WqhfZFnM=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "rachel@yopmail.com",
+        "first_name": "Rachel",
+        "last_name": "Green",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-01T16:20:57.195Z",
+        "email": "rachel@yopmail.com",
+        "organization": 3,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kudo_app.user",
+    "pk": 16,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$O4lteMsVAUrhNL1Pk49Lzo$yF7aHHM7+mhiYbcFWIoGrvwsuzQm38a2ewwRb1LYE54=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "joe@yopmail.com",
+        "first_name": "Joseph",
+        "last_name": "Tribiani",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-01T16:21:30.126Z",
+        "email": "joe@yopmail.com",
+        "organization": 5,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kudo_app.user",
+    "pk": 17,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$qzm9e0tiomkgfvWqIc8I21$3b1yNTjt9YRIUhOkxS2edHxrtL810fYxh9KENLxK1M4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "ross@yopmail.com",
+        "first_name": "Ross",
+        "last_name": "Geller",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-01T16:21:59.751Z",
+        "email": "ross@yopmail.com",
+        "organization": 5,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kudo_app.user",
+    "pk": 18,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$gQSCzHuIoXp7PWIIN5nqS4$uJICP2hfeE8wa19o0vOLobwgQG8ivz9HlLlFprYGQQU=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "stefan@yopmail.com",
+        "first_name": "Stefan",
+        "last_name": "Salvatore",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-01T16:26:40.845Z",
+        "email": "stefan@yopmail.com",
+        "organization": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kudo_app.user",
+    "pk": 19,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$XS2q8CwkbeaUgM5j1oQYZo$+9igcZ+fwAVaoGHKXzZI5QF+iQuR2jK1ti0/d3/2qTc=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "caroline@yopmail.com",
+        "first_name": "Caroline",
+        "last_name": "Forbes",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-08-01T16:28:17.466Z",
+        "email": "caroline@yopmail.com",
+        "organization": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

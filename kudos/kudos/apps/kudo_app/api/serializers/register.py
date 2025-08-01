@@ -45,8 +45,8 @@ class SerializerAPIRegister(serializers.Serializer):
     def register(self) -> None:
 
         User.objects.create_user(
-            email=self.validated_data['email'],
-            username=self.validated_data['email'],
+            email=self.validated_data['email'].lower(),
+            username=self.validated_data['email'].lower(),
             first_name=self.validated_data['first_name'],
             last_name=self.validated_data['last_name'],
             password=self.validated_data['password'],
