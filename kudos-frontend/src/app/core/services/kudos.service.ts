@@ -28,4 +28,8 @@ export class KudosService {
   sendKudo(data:any){
     return this.http.post(`${this.baseURL}kudo/`, data)
   }
+
+  receivedKudo(){
+    return this.http.get(`${this.baseURL}received-kudo/`)
+  }
 }

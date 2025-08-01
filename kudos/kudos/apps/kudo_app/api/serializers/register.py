@@ -29,7 +29,7 @@ class SerializerAPIRegister(serializers.Serializer):
         email = attrs['email'].lower()
         if User.objects.filter(email=email).exists():
             raise ValidationError(
-                {"email": "This email is already registered."}
+                "This email is already registered."
             )
         try:
             self.organization = Organization.objects.get(

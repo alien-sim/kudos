@@ -10,15 +10,42 @@
         </span>
     </div>
     <div class="content">
-        Welcome Back, {{ user.first_name }}
-        <div>
-            <h4>Send Kudos</h4>
+        <h3><span style="font-size: 16px;">Welcome,</span> {{ user.first_name | uppercase }}</h3>
+        <p-card header="Received Kudos" *ngIf="receivedKudoList.length" styleClass="my-3">
+            
+            <p-table [value]="receivedKudoList" [tableStyle]="{ 'max-width': '100%' }">
+                <ng-template #header>
+                    <tr>
+                        <th>Received from</th>
+                        <th>Date</th>
+                        <th></th>
+                        <!-- <th>Message</th> -->
+                       
+                    </tr>
+                </ng-template>
+                <ng-template #body let-kudo>
+                    <tr>
+                        <td>{{ kudo.sender.full_name }}</td>
+                        <!-- <td>{{ kudo.message }}</td> -->
+                        <td>{{ kudo.created_at | date:'mediumDate' }}</td>
+                        <td>
+                            <span (click)="showKudoMsg(kudo)">
+                                <i class="pi pi-eye"></i>
+                            </span>
+                        </td>
+                </ng-template>
+            </p-table>
+        </p-card>
+        <p-card header="Send Kudos">
             <form [formGroup]="sendKudoForm" (ngSubmit)="sendKudo()">
                 <div class="form-group-column">
                     <label>Select User</label>
                     <p-select [options]="userList" formControlName="reciever" 
                     optionLabel="first_name" optionValue="id"
                     class="w-full"></p-select>
+                    <small *ngIf="!userList.length">
+                        No other user in your organization.
+                    </small>
                 </div>
                 <div class="form-group-column">
                     <label>Message</label>
@@ -28,6 +55,14 @@
                     <p-button label="Send Kudo" type="submit"></p-button>
                 </div>
             </form>
-        </div>
+        </p-card>
     </div>
 </div>
+
+<p-dialog header="Kudo Message" [modal]="true" [(visible)]="showMsg" [style]="{ width: '25%' }">
+    <div>
+        Kudo from : {{kudoDetail?.sender?.full_name}}
+
+        <p>{{ kudoDetail?.message }}</p>
+    </div>
+</p-dialog>

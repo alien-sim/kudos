@@ -7,8 +7,33 @@ from kudos.apps.kudo_app.models.user import User
 from kudos.apps.kudo_app.models.kudo import Kudo
 from kudos.apps.kudo_app.models.kudo_tracker import WeeklyKudoTracker
 from kudos.apps.kudo_app.utility import get_week_start
+from kudos.apps.kudo_app.api.serializers.user_profile import SerializerAPIUserProfile
 
 logger = logging.getLogger(__name__)
+
+#-------------------------------------------------------------------------------
+# SerializerKudoModel
+#-------------------------------------------------------------------------------
+class SerializerKudoModel(serializers.ModelSerializer):
+
+    sender = serializers.SerializerMethodField()
+    receiver = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Kudo
+        fields = '__all__'
+
+    def get_sender(self, kudo):
+        return SerializerAPIUserProfile(
+            kudo.sender,
+            context=self.context
+        ).data
+    
+    def get_receiver(self, kudo):
+        return SerializerAPIUserProfile(
+            kudo.receiver,
+            context=self.context
+        ).data
 
 #-------------------------------------------------------------------------------
 # SerializerKudo

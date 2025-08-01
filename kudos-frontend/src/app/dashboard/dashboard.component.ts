@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../core/services/auth.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { KudosService } from '../core/services/kudos.service';
 import { first } from 'rxjs';
 import { MessageService } from 'primeng/api';
@@ -15,8 +15,11 @@ import { Router } from '@angular/router';
 export class DashboardComponent {
 
     user:any = {}
+    receivedKudoList:any = []
     sendKudoForm !: FormGroup
     userList:any = []
+    showMsg:any = false
+    kudoDetail:any 
 
     constructor(
         private authService: AuthService,
@@ -36,6 +39,7 @@ export class DashboardComponent {
             this.user = data
         })
         this.getUserList()
+        this.receivedKudos()
     }
 
     logout(){
@@ -56,16 +60,36 @@ export class DashboardComponent {
         })
     }
 
+    receivedKudos(){
+        this.kudoService.receivedKudo()
+        .pipe(first()).subscribe({
+            next:(success:any) => {
+                this.receivedKudoList = success;
+            }
+        })
+    }
+
     sendKudo(){
         if(!this.sendKudoForm.valid){
-            return
+            Object.keys(this.sendKudoForm.controls).forEach((field) => {
+                const control = this.sendKudoForm.get(field);
+                if (control instanceof FormControl) {
+                control.markAsTouched({ onlySelf: true });
+                control.markAsDirty({ onlySelf: true });
+                }
+            });
+            return ;
         }
         console.log(this.sendKudoForm.value)
         this.kudoService.sendKudo(this.sendKudoForm.value)
         .pipe(first()).subscribe({
             next:(success:any) => {
-                console.log(success)
                 this.sendKudoForm.reset()
+                this.messageService.add({
+                    severity:'success',
+                    summary:"Kudo Successfully sent",
+                    life: 3000
+                })
             },
             error:(error:any) => {
                 // console.log(error.error.reciever)
@@ -76,6 +100,11 @@ export class DashboardComponent {
                 })
             }
         })
+    }
+
+    showKudoMsg(kudo:any){
+        this.showMsg = true
+        this.kudoDetail = kudo
     }
 
 }

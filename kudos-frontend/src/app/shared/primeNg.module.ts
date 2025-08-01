@@ -25,6 +25,7 @@ import { PasswordModule } from 'primeng/password';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { RatingModule } from 'primeng/rating';
+import { CardModule } from 'primeng/card';
 
 import { SkeletonModule } from 'primeng/skeleton';
 import { SliderModule } from 'primeng/slider';
@@ -88,7 +89,8 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
         DatePickerModule,
         PopoverModule,
         DrawerModule,
-        InputGroupAddonModule
+        InputGroupAddonModule,
+        CardModule
     ]
 })
 export class PrimeNG { }

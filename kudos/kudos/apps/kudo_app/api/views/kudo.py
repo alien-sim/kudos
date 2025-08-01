@@ -1,5 +1,6 @@
 import logging
 
+from django.core.exceptions import ValidationError
 from django.http.response import JsonResponse
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK
@@ -23,11 +24,14 @@ class ViewAPIKudo(APIView):
             data=request.data,
             context={'request':request}
         )
-        
-        if serializer.is_valid():
-            response = serializer.save()
-            return Response(response, status=HTTP_200_OK)
-        
-        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+        try:
+            if serializer.is_valid():
+                response = serializer.save()
+                return Response(response, status=HTTP_200_OK)
+            
+            return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+        except ValidationError as e:
+            return Response({"reciever": e}, status=HTTP_400_BAD_REQUEST)
+
     
         

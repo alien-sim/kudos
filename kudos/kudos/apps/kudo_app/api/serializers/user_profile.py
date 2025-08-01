@@ -13,10 +13,14 @@ class SerializerAPIUserProfile(serializers.ModelSerializer):
     """
 
     organization = serializers.SerializerMethodField()
+    full_name = serializers.SerializerMethodField()
     
     class Meta:
         model = User
-        fields = ("id", "first_name", "last_name", "email", "organization")
+        fields = ("id", "first_name", "last_name", "email", "full_name", "organization")
+
+    def get_full_name(self, user):
+        return f"{user.first_name} {user.last_name}"
 
     def get_organization(self, user):
         print("njfew")

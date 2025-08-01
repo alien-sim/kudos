@@ -6,6 +6,8 @@ from kudos.apps.kudo_app.api.views.register import ViewAPIRegister
 from kudos.apps.kudo_app.api.views.organization import ViewAPIOrganization
 from kudos.apps.kudo_app.api.views.user_list import ViewAPIOrganizationUser
 from kudos.apps.kudo_app.api.views.kudo import ViewAPIKudo
+from kudos.apps.kudo_app.api.views.sent_kudo import ViewAPISentKudo
+from kudos.apps.kudo_app.api.views.received_kudo import ViewAPIReceivedKudo
 
 
 urlpatterns = [
@@ -39,5 +41,15 @@ urlpatterns = [
         'kudo/', 
         ViewAPIKudo.as_view(),
         name='kudo' 
+    ),
+    path(
+        'sent-kudo/', 
+        ViewAPISentKudo.as_view(),
+        name='sent-kudo' 
+    ),
+    path(
+        'received-kudo/', 
+        ViewAPIReceivedKudo.as_view(),
+        name='received-kudo' 
     )
 ]

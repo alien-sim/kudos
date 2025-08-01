@@ -7,7 +7,7 @@ from kudos.apps.kudo_app.models.kudo_tracker import WeeklyKudoTracker
 
 
 class AdminUser(admin.ModelAdmin):
-    list_display = ("email", )  
+    list_display = ("email", "organization")  
     search_fields = ("email", "first_name", 'last_name')
     list_filter = ("is_active",)
 
